@@ -1,2 +1,2 @@
-# the-lightsmith.github.io
+# the-lightsmith
 Lightsmith headlight restoration site
