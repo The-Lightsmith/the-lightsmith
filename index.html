@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Lightsmith</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom right, #ffffff, #f0f0f0);
+      color: #333;
+    }
+    .accent-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 250px;
+      background: linear-gradient(-20deg, #f1f1f1 50%, transparent 50%);
+      z-index: -1;
+    }
+    header {
+      text-align: center;
+      padding: 2em 1em;
+      position: relative;
+    }
+    img.logo {
+      width: 180px;
+      max-width: 80%;
+    }
+    h1 { font-size: 2em; margin: 0.5em 0; }
+    .tagline { font-style: italic; color: #666; }
+    .button {
+      display: inline-block;
+      margin: 1em;
+      padding: 0.75em 1.5em;
+      color: #333;
+      background-color: #dddddd;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .button:hover {
+      background-color: #cccccc;
+      transform: scale(1.05);
+    }
+    .section {
+      padding: 2em 1em;
+      text-align: center;
+    }
+    .image-pair {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 2em;
+    }
+    .slider-wrapper {
+      position: relative;
+      width: 300px;
+      height: auto;
+    }
+    .slider-wrapper img {
+      width: 100%;
+      height: auto;
+      display: none;
+      border-radius: 6px;
+    }
+    .slider-wrapper img.active {
+      display: block;
+    }
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      padding: 0.3em 0.6em;
+      cursor: pointer;
+      font-size: 1.2em;
+      z-index: 2;
+    }
+    .arrow.left {
+      left: 10px;
+    }
+    .arrow.right {
+      right: 10px;
+    }
+    .social-icons a {
+      margin: 0 0.5em;
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .social-icons a:hover { text-decoration: underline; }
+    footer {
+      background-color: #e9ecef;
+      padding: 1em;
+      text-align: center;
+      font-size: 0.9em;
+    }
+    @media (max-width: 700px) {
+      .image-pair {
+        flex-direction: column;
+      }
+    }
+  </style>
+  <script>
+    function setupSliders() {
+      const sliders = document.querySelectorAll(".slider-wrapper");
+      sliders.forEach(wrapper => {
+        const images = wrapper.querySelectorAll("img");
+        let current = 0;
+        images[current].classList.add("active");
+
+        wrapper.querySelector(".left").addEventListener("click", () => {
+          images[current].classList.remove("active");
+          current = (current - 1 + images.length) % images.length;
+          images[current].classList.add("active");
+        });
+
+        wrapper.querySelector(".right").addEventListener("click", () => {
+          images[current].classList.remove("active");
+          current = (current + 1) % images.length;
+          images[current].classList.add("active");
+        });
+      });
+    }
+    document.addEventListener("DOMContentLoaded", setupSliders);
+  </script>
+</head>
+<body>
+  <div class="accent-background"></div>
+  <header>
+    <img src="logo.jpg" alt="The Lightsmith Logo" class="logo" />
+    <h1>The Lightsmith</h1>
+    <p class="tagline">Bringing headlights back to life</p>
+  </header>
+
+  <div class="section">
+    <a href="https://forms.gle/ttyJKVvsXDUz8t1Z7" class="button" target="_blank">Book an Appointment</a>
+    <a href="https://g.co/kgs/gxGc6c5" class="button" target="_blank">⭐ Leave a Google Review</a>
+    <p><strong>Price:</strong> $75 per vehicle</p>
+    <p><strong>Warranty:</strong> 5-Year Satisfaction Guarantee</p>
+    <p><strong>Note:</strong> Appointment only. Covered area required in bad weather. Preexisting damage not covered.</p>
+  </div>
+
+  <div class="section">
+    <h2>Before & After Gallery</h2>
+    <div class="image-pair">
+      <div class="slider-wrapper">
+        <button class="arrow left">&#10094;</button>
+        <img src="mustang-before.jpg" alt="Before Mustang">
+        <img src="mustang-after.jpg" alt="After Mustang">
+        <button class="arrow right">&#10095;</button>
+      </div>
+      <div class="slider-wrapper">
+        <button class="arrow left">&#10094;</button>
+        <img src="truck-before.jpg" alt="Before Truck">
+        <img src="truck-after.jpg" alt="After Truck">
+        <button class="arrow right">&#10095;</button>
+      </div>
+    </div>
+    <div class="image-pair">
+      <div class="slider-wrapper">
+        <button class="arrow left">&#10094;</button>
+        <img src="car1-before.jpg" alt="Before Car 1">
+        <img src="car1-after.jpg" alt="After Car 1">
+        <button class="arrow right">&#10095;</button>
+      </div>
+      <div class="slider-wrapper">
+        <button class="arrow left">&#10094;</button>
+        <img src="car2-before.jpg" alt="Before Car 2">
+        <img src="car2-after.jpg" alt="After Car 2">
+        <button class="arrow right">&#10095;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section social-icons">
+    <a href="https://www.instagram.com/the_lightsmith_restoration/" target="_blank">Instagram</a> |
+    <a href="https://www.facebook.com/profile.php?id=61577956997188" target="_blank">Facebook</a> |
+    <a href="https://www.tiktok.com/@the_lightsmith" target="_blank">TikTok</a>
+  </div>
+
+  <div class="section">
+    <h2>Google Reviews</h2>
+    <p>See what customers are saying on our <a href="https://g.co/kgs/gxGc6c5" target="_blank">Google review page</a>.</p>
+    <a href="https://g.co/kgs/gxGc6c5" target="_blank">
+      <img src="https://www.gstatic.com/images/icons/material/system/2x/star_rate_black_24dp.png" alt="Google Reviews" style="width:40px; vertical-align:middle;"> Leave a Review
+    </a>
+  </div>
+
+  <footer class="section">
+    Contact: 801-341-9391 | <a href="mailto:jack@lightsmith.llc">jack@lightsmith.llc</a><br/>
+    &copy; 2025 The Lightsmith LLC
+  </footer>
+</body>
+</html>
