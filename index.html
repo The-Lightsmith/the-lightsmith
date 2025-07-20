@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Lightsmith</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom right, #ffffff, #f0f0f0);
+      color: #333;
+    }
+    .accent-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 250px;
+      background: linear-gradient(-20deg, #f1f1f1 50%, transparent 50%);
+      z-index: -1;
+    }
+    header {
+      text-align: center;
+      padding: 2em 1em;
+      position: relative;
+    }
+    img.logo {
+      width: 180px;
+      max-width: 80%;
+    }
+    h1 { font-size: 2em; margin: 0.5em 0; }
+    .tagline { font-style: italic; color: #666; }
+    .button {
+      display: inline-block;
+      margin: 1em;
+      padding: 0.75em 1.5em;
+      color: #333;
+      background-color: #dddddd;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .button:hover {
+      background-color: #cccccc;
+      transform: scale(1.05);
+    }
+    .section {
+      padding: 2em 1em;
+      text-align: center;
+      animation: fadeIn 1s ease-out forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .slider img {
+      display: none;
+      width: 45%;
+      margin: 0 2%;
+      max-width: 300px;
+    }
+    .slider img:first-child {
+      display: block;
+    }
+    .social-icons {
+      margin: 2em 0;
+    }
+    .social-icons a {
+      margin: 0 0.5em;
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .social-icons a:hover { text-decoration: underline; }
+    footer {
+      background-color: #e9ecef;
+      padding: 1em;
+      text-align: center;
+      font-size: 0.9em;
+    }
+    @media (max-width: 600px) {
+      .slider img {
+        width: 90%;
+        margin: 1em auto;
+        display: block;
+      }
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sliders = document.querySelectorAll(".slider");
+      sliders.forEach(slider => {
+        let index = 0;
+        const images = slider.querySelectorAll("img");
+        images.forEach((img, i) => img.style.display = i === 0 ? 'block' : 'none');
+        setInterval(() => {
+          images[index].style.display = 'none';
+          index = (index + 1) % images.length;
+          images[index].style.display = 'block';
+        }, 3000);
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="accent-background"></div>
+  <header>
+    <img src="logo.jpg" alt="The Lightsmith Logo" class="logo" />
+    <h1>The Lightsmith</h1>
+    <p class="tagline">Bringing headlights back to life</p>
+  </header>
+
+  <div class="section">
+    <a href="https://forms.gle/ttyJKVvsXDUz8t1Z7" class="button" target="_blank">Book an Appointment</a>
+    <a href="https://g.co/kgs/gxGc6c5" class="button" target="_blank">⭐ Leave a Google Review</a>
+    <p><strong>Price:</strong> $75 per vehicle</p>
+    <p><strong>Warranty:</strong> 5-Year Satisfaction Guarantee</p>
+    <p><strong>Note:</strong> Appointment only. Covered area required in bad weather. Preexisting damage not covered.</p>
+  </div>
+
+  <div class="section">
+    <h2>Before & After Gallery</h2>
+    <div class="slider">
+      <img src="mustang-before.jpg" alt="Before Mustang">
+      <img src="mustang-after.jpg" alt="After Mustang">
+    </div>
+    <div class="slider">
+      <img src="truck-before.jpg" alt="Before Truck">
+      <img src="truck-after.jpg" alt="After Truck">
+    </div>
+    <div class="slider">
+      <img src="car1-before.jpg" alt="Before Car 1">
+      <img src="car1-after.jpg" alt="After Car 1">
+    </div>
+    <div class="slider">
+      <img src="car2-before.jpg" alt="Before Car 2">
+      <img src="car2-after.jpg" alt="After Car 2">
+    </div>
+  </div>
+
+  <div class="section social-icons">
+    <a href="https://www.instagram.com/the_lightsmith_restoration/" target="_blank">Instagram</a> |
+    <a href="https://www.facebook.com/profile.php?id=61577956997188" target="_blank">Facebook</a> |
+    <a href="https://www.tiktok.com/@the_lightsmith" target="_blank">TikTok</a>
+  </div>
+
+  
+  <div class="section fade-in">
+    <h2>What People Are Saying</h2>
+    <p><a href="https://g.co/kgs/gxGc6c5" target="_blank">Click here to read and leave a Google review!</a></p>
+    <iframe src="https://search.google.com/local/reviews?placeid=ChIJQ8vUd7tNTVMR7PGH8Uw5HNo"
+            width="100%" height="120" frameborder="0"
+            style="border:0; display:block; max-width:600px; margin: 1em auto;"
+            allowfullscreen></iframe>
+  </div>
+
+<footer class="section">
+    Contact: 801-341-9391 | <a href="mailto:jack@lightsmith.llc">jack@lightsmith.llc</a><br/>
+    &copy; 2025 The Lightsmith LLC
+  </footer>
+</body>
+</html>
