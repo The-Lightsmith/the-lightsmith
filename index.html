@@ -1,50 +1,17 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const sliders = document.querySelectorAll(".slider");
-      sliders.forEach(slider => {
-        let index = 0;
-        const images = slider.querySelectorAll("img");
-        images.forEach((img, i) => img.style.display = i === 0 ? 'block' : 'none');
-        setInterval(() => {
-          images[index].style.display = 'none';
-          index = (index + 1) % images.length;
-          images[index].style.display = 'block';
-        }, 3000);
-      });
-    });
-  </script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Lightsmith</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
-  
-<style>
-  body {
-    background: linear-gradient(to bottom right, #ffffff, #f0f0f0);
-  }
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 1s ease-out forwards;
-  }
-  @keyframes fadeIn {
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
-
+  <style>
     * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background: #f8f9fa;
+      background: linear-gradient(to bottom right, #ffffff, #f0f0f0);
       color: #333;
     }
     .accent-background {
@@ -86,14 +53,24 @@
     .section {
       padding: 2em 1em;
       text-align: center;
+      animation: fadeIn 1s ease-out forwards;
+      opacity: 0;
+      transform: translateY(20px);
     }
-    .photo-pair {
-      margin: 1em 0;
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: none;
+      }
     }
-    .photo-pair img {
+    .slider img {
+      display: none;
       width: 45%;
       margin: 0 2%;
       max-width: 300px;
+    }
+    .slider img:first-child {
+      display: block;
     }
     .social-icons {
       margin: 2em 0;
@@ -112,23 +89,38 @@
       font-size: 0.9em;
     }
     @media (max-width: 600px) {
-      .photo-pair img {
+      .slider img {
         width: 90%;
         margin: 1em auto;
         display: block;
       }
     }
   </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sliders = document.querySelectorAll(".slider");
+      sliders.forEach(slider => {
+        let index = 0;
+        const images = slider.querySelectorAll("img");
+        images.forEach((img, i) => img.style.display = i === 0 ? 'block' : 'none');
+        setInterval(() => {
+          images[index].style.display = 'none';
+          index = (index + 1) % images.length;
+          images[index].style.display = 'block';
+        }, 3000);
+      });
+    });
+  </script>
 </head>
 <body>
   <div class="accent-background"></div>
   <header>
-    <img src="https://drive.google.com/uc?export=view&id=1c20gh8b020l3vprl980WnXOL63vXL-J5" alt="The Lightsmith Logo" class="logo" />
+    <img src="logo.jpg" alt="The Lightsmith Logo" class="logo" />
     <h1>The Lightsmith</h1>
     <p class="tagline">Bringing headlights back to life</p>
   </header>
 
-  <div class="section fade-in">
+  <div class="section">
     <a href="https://forms.gle/ttyJKVvsXDUz8t1Z7" class="button" target="_blank">Book an Appointment</a>
     <a href="https://g.co/kgs/gxGc6c5" class="button" target="_blank">Leave a Review</a>
     <p><strong>Price:</strong> $75 per vehicle</p>
@@ -136,55 +128,33 @@
     <p><strong>Note:</strong> Appointment only. Covered area required in bad weather. Preexisting damage not covered.</p>
   </div>
 
-  
-  <div class="section fade-in">
+  <div class="section">
     <h2>Before & After Gallery</h2>
-    <div class="slider photo-pair">
-      <img src="https://drive.google.com/uc?export=view&id=1DLxFgQkiRwgLXCV4dI-eKbqriDJXl2ae" alt="Before Mustang">
-      <img src="https://drive.google.com/uc?export=view&id=1vcczrIKuIZzm2zPTffIk2ckNpw9lYbFV" alt="After Mustang">
+    <div class="slider">
+      <img src="mustang-before.jpg" alt="Before Mustang">
+      <img src="mustang-after.jpg" alt="After Mustang">
     </div>
-    <div class="slider photo-pair">
-      <img src="https://drive.google.com/uc?export=view&id=1wx_7Xr2VK9nnSZXL3g_9X83HCxZwTI6B" alt="Before Truck">
-      <img src="https://drive.google.com/uc?export=view&id=1sltU3bTVBY6QkoOYKtKfyVReP84wyMh3" alt="After Truck">
+    <div class="slider">
+      <img src="truck-before.jpg" alt="Before Truck">
+      <img src="truck-after.jpg" alt="After Truck">
     </div>
-    <div class="slider photo-pair">
-      <img src="https://drive.google.com/uc?export=view&id=1BeB-zaIYrZmBU8mQPtqvLnzZPSa67HNZ" alt="Before Car 1">
-      <img src="https://drive.google.com/uc?export=view&id=1xvVBihXUE-TPbWBzp5Xuv1DZ3Xj78aJ4" alt="After Car 1">
+    <div class="slider">
+      <img src="car1-before.jpg" alt="Before Car 1">
+      <img src="car1-after.jpg" alt="After Car 1">
     </div>
-    <div class="slider photo-pair">
-      <img src="https://drive.google.com/uc?export=view&id=1nT9ESDp6v3mmI-kw_4oTQMyg_IipcVIC" alt="Before Car 2">
-      <img src="https://drive.google.com/uc?export=view&id=1p82NNCTHMtDZX3VrlJJkTAOkgBnz_b4k" alt="After Car 2">
+    <div class="slider">
+      <img src="car2-before.jpg" alt="Before Car 2">
+      <img src="car2-after.jpg" alt="After Car 2">
     </div>
   </div>
 
-    
-    
-    <div class="slider photo-pair">
-      <img src="https://drive.google.com/uc?export=view&id=1wx_7Xr2VK9nnSZXL3g_9X83HCxZwTI6B" alt="Before">
-      <img src="https://drive.google.com/uc?export=view&id=1sltU3bTVBY6QkoOYKtKfyVReP84wyMh3" alt="After">
-    </div>
-    
-    
-    <div class="slider photo-pair">
-      <img src="https://drive.google.com/uc?export=view&id=1BeB-zaIYrZmBU8mQPtqvLnzZPSa67HNZ" alt="Before">
-      <img src="https://drive.google.com/uc?export=view&id=1xvVBihXUE-TPbWBzp5Xuv1DZ3Xj78aJ4" alt="After">
-    </div>
-    
-    
-    <div class="slider photo-pair">
-      <img src="https://drive.google.com/uc?export=view&id=1nT9ESDp6v3mmI-kw_4oTQMyg_IipcVIC" alt="Before">
-      <img src="https://drive.google.com/uc?export=view&id=1p82NNCTHMtDZX3VrlJJkTAOkgBnz_b4k" alt="After">
-    </div>
-    
-  </div>
-
-  <div class="section social-icons fade-in">
+  <div class="section social-icons">
     <a href="https://www.instagram.com/the_lightsmith_restoration/" target="_blank">Instagram</a> |
     <a href="https://www.facebook.com/profile.php?id=61577956997188" target="_blank">Facebook</a> |
     <a href="https://www.tiktok.com/@the_lightsmith" target="_blank">TikTok</a>
   </div>
 
-  <footer class="fade-in">
+  <footer class="section">
     Contact: 801-341-9391 | <a href="mailto:jack@lightsmith.llc">jack@lightsmith.llc</a><br/>
     &copy; 2025 The Lightsmith LLC
   </footer>
